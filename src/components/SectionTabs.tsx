@@ -7,17 +7,17 @@ interface Props {
 }
 
 const SECTION_ICONS: Record<string, string> = {
-  eat: '🍽',
+  eat:    '🍽',
   coffee: '☕',
-  drink: '🍸',
-  do: '🗺',
-  tips: '💡',
+  drink:  '🍸',
+  do:     '🗺',
+  tips:   '💡',
 }
 
 export default function SectionTabs({ sections, activeId, onChange }: Props) {
   return (
     <div
-      className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide"
+      className="flex gap-2 overflow-x-auto scrollbar-hide"
       role="tablist"
       aria-label="City guide sections"
     >
@@ -31,10 +31,10 @@ export default function SectionTabs({ sections, activeId, onChange }: Props) {
             role="tab"
             aria-selected={isActive}
             onClick={() => onChange(section.id)}
-            className={`flex items-center gap-1.5 px-4 py-2 rounded-full font-display font-semibold text-sm whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 ${
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-full font-display font-semibold text-sm whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
               isActive
-                ? 'bg-stone-900 text-white'
-                : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                ? 'bg-accent text-white shadow-sm'
+                : 'bg-stone-100 text-stone-500 hover:bg-stone-200 hover:text-stone-800'
             }`}
           >
             <span aria-hidden="true">{icon}</span>

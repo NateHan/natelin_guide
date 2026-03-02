@@ -5,7 +5,6 @@ interface Props {
   city: CityMeta
 }
 
-// Cycle through bold colors when a city has no hero image
 const PLACEHOLDER_COLORS = [
   'bg-amber-400',
   'bg-rose-400',
@@ -27,30 +26,28 @@ export default function CityCard({ city }: Props) {
   return (
     <Link
       to={`/${slug}`}
-      className="block group overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
+      className="block group overflow-hidden rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
     >
       <div className="relative aspect-[4/3]">
         {hero_image ? (
           <img
             src={hero_image}
             alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
           />
         ) : (
           <div className={`w-full h-full ${placeholderColor(slug)}`} />
         )}
 
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
 
-        {/* City info overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+        <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
           <h2 className="font-display font-bold text-2xl leading-tight tracking-tight">
             {title}
           </h2>
-          <p className="text-sm text-white/75 mt-0.5 font-body">{country}</p>
+          <p className="text-sm text-white/70 mt-0.5 font-body">{country}</p>
           {tagline && (
-            <p className="text-sm text-white/65 mt-1.5 font-body italic line-clamp-2">
+            <p className="text-sm text-white/60 mt-2 font-body italic leading-snug line-clamp-2">
               &ldquo;{tagline}&rdquo;
             </p>
           )}

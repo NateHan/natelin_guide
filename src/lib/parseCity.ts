@@ -1,10 +1,46 @@
 import { marked } from 'marked'
 
-// Ensure marked always returns synchronously
 marked.use({ async: false })
 
-// Browser-safe frontmatter parser — gray-matter uses Node's Buffer and can't run in browser.
-// Our YAML is simple key: value pairs, so a regex parser is sufficient.
+export interface CityMeta {
+  title: string
+  country: string
+  visited?: string
+  hero_image?: string
+  tagline?: string
+  slug: string
+}
+
+export interface Spot {
+  name: string
+  html: string
+}
+
+export interface SpotGroup {
+  name: string      // empty string = ungrouped (Coffee, Drink, Do, Tips)
+  introHtml: string // notes/context before first spot in the group
+  spots: Spot[]
+}
+
+export interface CitySection {
+  id: string
+  label: string
+  groups: SpotGroup[]
+  introHtml: string // content before any group or spot
+}
+
+export interface ParsedCity {
+  meta: CityMeta
+  sections: CitySection[]
+}
+
+const SECTION_ORDER = ['eat', 'coffee', 'drink', 'do', 'tips']
+
+function mdToHtml(src: string): string {
+  return marked.parse(src) as string
+}
+
+// Browser-safe frontmatter parser (gray-matter uses Node's Buffer)
 function parseFrontmatter(raw: string): { data: Record<string, string>; content: string } {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
   if (!match) return { data: {}, content: raw }
@@ -21,82 +57,88 @@ function parseFrontmatter(raw: string): { data: Record<string, string>; content:
   return { data, content: match[2] }
 }
 
-export interface CityMeta {
-  title: string
-  country: string
-  visited?: string
-  hero_image?: string
-  tagline?: string
-  slug: string
-}
-
-export interface Spot {
-  name: string
-  html: string
-}
-
-export interface CitySection {
-  id: string
-  label: string
-  spots: Spot[]
-  introHtml: string
-}
-
-export interface ParsedCity {
-  meta: CityMeta
-  sections: CitySection[]
-}
-
-// Canonical display order for sections
-const SECTION_ORDER = ['eat', 'coffee', 'drink', 'do', 'tips']
-
-function mdToHtml(src: string): string {
-  return marked.parse(src) as string
-}
-
 function parseSection(label: string, rawContent: string): CitySection {
   const id = label.toLowerCase().replace(/\s+/g, '-')
-  const spotRegex = /^### (.+)$/gm
-  const matches = [...rawContent.matchAll(spotRegex)]
+
+  // ── Grouped format: #### Group Name > ##### Spot Name (used for Eat) ──
+  const groupRegex = /^#### (.+)$/gm
+  const groupMatches = [...rawContent.matchAll(groupRegex)]
 
   let introHtml = ''
-  const spots: Spot[] = []
+  const groups: SpotGroup[] = []
 
-  if (matches.length === 0) {
-    // No ### headings — render the whole thing (e.g. Tips bullet list)
+  if (groupMatches.length > 0) {
+    if (groupMatches[0].index! > 0) {
+      introHtml = mdToHtml(rawContent.slice(0, groupMatches[0].index!).trim())
+    }
+
+    groupMatches.forEach((gMatch, gi) => {
+      const groupName = gMatch[1].trim()
+      const groupStart = gMatch.index! + gMatch[0].length
+      const groupEnd = groupMatches[gi + 1]?.index ?? rawContent.length
+      const groupContent = rawContent.slice(groupStart, groupEnd).trim()
+
+      const spotRegex = /^##### (.+)$/gm
+      const spotMatches = [...groupContent.matchAll(spotRegex)]
+
+      // Prose before the first ##### in this group (e.g. a note about the category)
+      let groupIntroHtml = ''
+      if (spotMatches.length > 0 && spotMatches[0].index! > 0) {
+        groupIntroHtml = mdToHtml(groupContent.slice(0, spotMatches[0].index!).trim())
+      } else if (spotMatches.length === 0) {
+        groupIntroHtml = mdToHtml(groupContent)
+      }
+
+      const spots: Spot[] = spotMatches.map((sMatch, si) => {
+        const name = sMatch[1].trim()
+        const start = sMatch.index! + sMatch[0].length
+        const end = spotMatches[si + 1]?.index ?? groupContent.length
+        return { name, html: mdToHtml(groupContent.slice(start, end).trim()) }
+      })
+
+      groups.push({ name: groupName, introHtml: groupIntroHtml, spots })
+    })
+
+    return { id, label, groups, introHtml }
+  }
+
+  // ── Ungrouped format: ### Spot Name (Coffee, Drink, Do, Tips) ──
+  const spotRegex = /^### (.+)$/gm
+  const spotMatches = [...rawContent.matchAll(spotRegex)]
+
+  if (spotMatches.length === 0) {
+    // Pure prose — e.g. Tips bullet list
     introHtml = mdToHtml(rawContent.trim())
-    return { id, label, spots, introHtml }
+    return { id, label, groups: [], introHtml }
   }
 
-  // Prose before the first ### heading
-  if (matches[0].index! > 0) {
-    introHtml = mdToHtml(rawContent.slice(0, matches[0].index!).trim())
+  if (spotMatches[0].index! > 0) {
+    introHtml = mdToHtml(rawContent.slice(0, spotMatches[0].index!).trim())
   }
 
-  matches.forEach((match, i) => {
+  const spots: Spot[] = spotMatches.map((match, i) => {
     const name = match[1].trim()
     const start = match.index! + match[0].length
-    const end = matches[i + 1]?.index ?? rawContent.length
-    const html = mdToHtml(rawContent.slice(start, end).trim())
-    spots.push({ name, html })
+    const end = spotMatches[i + 1]?.index ?? rawContent.length
+    return { name, html: mdToHtml(rawContent.slice(start, end).trim()) }
   })
 
-  return { id, label, spots, introHtml }
+  groups.push({ name: '', introHtml: '', spots })
+  return { id, label, groups, introHtml }
 }
 
 export function parseCity(raw: string, slug: string): ParsedCity {
   const { data, content } = parseFrontmatter(raw)
 
   const meta: CityMeta = {
-    title: data.title ?? slug,
-    country: data.country ?? '',
-    visited: data.visited ?? undefined,
+    title:      data.title      ?? slug,
+    country:    data.country    ?? '',
+    visited:    data.visited    ?? undefined,
     hero_image: data.hero_image ?? undefined,
-    tagline: data.tagline ?? undefined,
+    tagline:    data.tagline    ?? undefined,
     slug,
   }
 
-  // Split body into sections by ## headings
   const sectionRegex = /^## (.+)$/gm
   const sectionMatches = [...content.matchAll(sectionRegex)]
 
@@ -107,7 +149,6 @@ export function parseCity(raw: string, slug: string): ParsedCity {
     return parseSection(label, content.slice(start, end).trim())
   })
 
-  // Sort sections into canonical order; unknown sections go at the end
   sections.sort((a, b) => {
     const ai = SECTION_ORDER.indexOf(a.id)
     const bi = SECTION_ORDER.indexOf(b.id)

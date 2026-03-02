@@ -7,8 +7,9 @@
     margin: 0;
     min-height: 100vh;
   }
+
   body {
-    @apply font-body bg-stone-50 text-stone-900 antialiased;
+    @apply font-body bg-page text-stone-900 antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -17,7 +18,6 @@
 }
 
 @layer utilities {
-  /* Hide scrollbar for horizontal tab overflow on mobile */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -28,7 +28,7 @@
 }
 
 @layer components {
-  /* Styles for rendered Markdown inside SpotCards */
+  /* Spot card rendered Markdown */
   .spot-content p {
     @apply mb-2 last:mb-0;
   }
@@ -41,20 +41,25 @@
     @apply list-decimal pl-4 space-y-1;
   }
 
-  /* Map links get an orange pill treatment */
+  /* Map links → orange pill */
   .spot-content a[href*="maps.google"],
   .spot-content a[href*="maps.app.goo"] {
-    @apply inline-flex items-center gap-1 bg-orange-500 text-white text-xs font-display font-semibold px-2.5 py-0.5 rounded-full no-underline hover:bg-orange-600 transition-colors;
+    @apply inline-flex items-center gap-1 bg-accent text-white text-xs font-display font-semibold px-2.5 py-0.5 rounded-full no-underline hover:opacity-90 transition-opacity;
   }
 
   .spot-content a[href*="maps.google"]::before,
   .spot-content a[href*="maps.app.goo"]::before {
     content: "📍";
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   /* All other links */
   .spot-content a:not([href*="maps.google"]):not([href*="maps.app.goo"]) {
-    @apply text-orange-500 underline underline-offset-2 hover:text-orange-600;
+    @apply text-accent underline underline-offset-2 hover:opacity-80 transition-opacity;
+  }
+
+  /* Group intro prose (notes/tips between group heading and first spot) */
+  .group-intro p {
+    @apply text-sm text-stone-500 italic mb-3;
   }
 }

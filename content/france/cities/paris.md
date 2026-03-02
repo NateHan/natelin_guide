@@ -8,61 +8,65 @@ tagline: Hit the tourist spots, then go find the real stuff.
 
 ## Eat
 
-### Du Pain et des Idées
+#### Bakeries & Pastries
+
+Did you know that some 80% of France's pastries are mass-produced and shipped into shops? Seek out places that still make everything in-house — it makes all the difference.
+
+##### Du Pain et des Idées
 Le Marais · $ · [Map](https://maps.google.com/?q=Du+Pain+et+des+Idees+Paris)
 
-Did you know that some 80% of France's pastries are mass-produced, and then shipped into a pastry shop? This one still makes everything in-house. Stop here before or after walking the canals in Le Marais.
+Still makes everything in-house. Stop here before or after walking the canals in Le Marais.
 
-### BSurprises
+##### BSurprises
 · $ · [Map](https://maps.google.com/?q=BSurprises+Paris)
 
 Low-frills, made-in-house pastries.
 
-### Boulangerie Utopie
+##### Boulangerie Utopie
 · $ · [Map](https://maps.google.com/?q=Boulangerie+Utopie+Paris)
 
-Tasty pastries, usually on the simple side. They have some that are sesame-infused or flavored, be sure not to miss these!
+Tasty pastries, usually on the simple side. They have some sesame-infused or flavored ones — be sure not to miss these.
 
-### Patisserie Cyril Lignac
+##### Patisserie Cyril Lignac
 · $$ · [Map](https://maps.google.com/?q=Patisserie+Cyril+Lignac+Paris)
 
-Go here for fancy patisserie (think decorated mini-cakes like you'd see on Bake-Off). Truly little works of art, but also very tasty.
+Go here for fancy patisserie — decorated mini-cakes like you'd see on Bake-Off. Truly little works of art, and very tasty.
 
----
+#### Crêpes
 
-### Lulu la Nantaise
+*Watch out for places that have the crêpe pre-made — you'll see a warming container or a basket with a towel. You want them to pour the batter fresh and make it on the spot.*
+
+##### Lulu la Nantaise
 · $ · [Map](https://maps.google.com/?q=Lulu+la+Nantaise+Paris)
 
-Small joint, makes them fresh and very tasty. Save room for a savory crepe for lunch and share a sweet one after!
+Small joint, makes them fresh and very tasty. Save room for a savory crêpe for lunch and share a sweet one after.
 
-*On crepes in general: watch out for places that have the crepe pre-made (you'll see a warming container, or a basket with a towel over it, etc.). You want them to pour the batter fresh and make them on the spot.*
+#### Restaurants
 
----
-
-### L'As du Fallafel
+##### L'As du Fallafel
 Le Marais · $ · [Map](https://maps.google.com/?q=L%27As+du+Fallafel+Paris)
 
-Fallafel in Paris? I know what you're thinking - but they have an incredible and affordable fallafel sandwich, would not miss it. Grab it to go, and take it to eat on a bench in the nearby Jardin des Rosiers Joseph Migneret (entrance is a half block South East) for a very serene moment in the middle of the city.
+Falafel in Paris sounds like a detour, but this is an incredible and affordable falafel sandwich. Grab it to go and eat on a bench in the nearby Jardin des Rosiers Joseph Migneret (entrance a half block southeast) for a serene moment in the city.
 
-### Le Grand Bain
+##### Le Grand Bain
 Belleville · $$ · [Map](https://maps.google.com/?q=14+Rue+Denoyez+Paris)
 
-Steph and my's favorite restaurant. Sharing-plates style. Get a reservation online — https://www.legrandbainparis.com/en/
+Steph and my's favorite restaurant. Sharing-plates style. Get a reservation at legrandbainparis.com.
 
-### Les Bancs Publics
+##### Les Bancs Publics
 · $$ · [Map](https://maps.google.com/?q=Les+Bancs+Publics+Paris)
 
-Cute, authentic French food. It was affordable when I went and very unique food. Good for lunch especially.
+Cute, authentic French food. Affordable and very unique. Good for lunch especially.
 
-### Kubri
+##### Kubri
 · $$$ · [Map](https://maps.google.com/?q=Kubri+Paris)
 
-Amazing upscale Lebanese food. You won't leave hungry!
+Amazing upscale Lebanese food. You won't leave hungry.
 
-### Brasserie Martin
+##### Brasserie Martin
 · $$ · [Map](https://maps.google.com/?q=Brasserie+Martin+Paris)
 
-Authentic, cute, and DELICIOUS French Brasserie. Be sure to reserve in advance.
+Authentic, cute, and delicious French brasserie. Reserve in advance.
 
 ---
 
@@ -78,24 +82,24 @@ At the top of Parc des Buttes-Chaumont. Great spot for a refresher after hanging
 ## Do
 
 ### Parc des Buttes-Chaumont
-Walk around and enjoy the Parisian vibe — a truly local park where you can soak up the atmosphere with the locals. Bring a blanket, wine, and snacks and hang.
+A truly local park where you can soak up the Parisian atmosphere with locals. Bring a blanket, wine, and snacks and hang.
 
 ### Walk the Canals in Le Marais
 Stop for a pastry at Du Pain et des Idées before or after.
 
 ### The Catacombs
-This is still touristy, but worth it. Seriously cool, creepy, and a one-of-a-kind place.
+Touristy, but worth it. Seriously cool, creepy, and a one-of-a-kind place.
 
 ### Musée d'Orsay
-Museum holding one of the greatest impressionist collections in the world. Reserve your ticket in advance.
+Holds one of the greatest Impressionist collections in the world. Reserve your ticket in advance.
 
 ### The Usuals
-Eiffel Tower, the Louvre, Sacré-Cœur, the rebuilt Notre Dame — on your first go, you'll likely want to hit all the tourist hotspots, and that'll be great, but you will not necessarily see or taste some of the real stuff.
+Eiffel Tower, the Louvre, Sacré-Cœur, the rebuilt Notre Dame — on your first go you'll likely want to hit all the tourist hotspots, and that'll be great. But you won't necessarily taste the real stuff. This guide is for the real stuff.
 
 ---
 
 ## Tips
 
-- Download **CityMapper** — it's like Google Maps but for city transit. Really good about providing all the possible public transit routes to and from any destination.
-- Consider getting an **eSIM card** for data. You can do this online and activate anywhere. 20 GB is super cheap, like $15 USD — makes you realize how scammed we get on data in the US. You can also get the SIM-card version at most convenience bodegas, and it'll cover you across the whole continent; often they'll help you set it up in the shop.
-- If you don't have data, download an **offline map** on Google Maps for the city before you go. You'll be able to navigate even if off WiFi.
+- Download **CityMapper** — it's like Google Maps but purpose-built for city transit. Really good at surfacing all possible public transit options.
+- Consider getting an **eSIM card** for data. 20 GB is around $15 USD and covers the whole continent. You can also get the SIM-card version at most convenience stores.
+- Download an **offline map** on Google Maps before you go in case you're ever off WiFi.
